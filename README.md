@@ -4,7 +4,9 @@ Gestionar los procesos de una compañía con actividad económica de comercializ
 
 ## ¿Cómo ejecutar?
 
-Inicie con insumos-tecnologicos-backend y luego insumos-tecnologicos-frontend
+Clona el repositorio o descarga el repositorio en formato ZIP
+
+Inicia con insumos-tecnologicos-backend y luego insumos-tecnologicos-frontend
 
 **insumos-tecnologicos-backend**
 
