@@ -1,0 +1,5 @@
+<h1 class="text-center display-4 mb-5">{{title}}</h1>
+<div class="card-columns">
+  <app-home-child [productInfo]="productInfo" *ngFor="let productInfo of page?.content"></app-home-child>
+</div>
+<app-pagination [currentPage]="page"></app-pagination>

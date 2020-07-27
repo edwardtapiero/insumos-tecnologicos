@@ -1,0 +1,45 @@
+<h1 class="text-center display-4 ">Productos</h1>
+<br><br>
+<a routerLink="/admin/producto/new" class="btn btn-primary float-right mb-3">
+  <i class="fas fa-plus fa-2x">Añadir nuevo producto</i>
+</a>
+<table id="table" class="table table-striped text-center" style="width:100%;">
+  <thead>
+  <tr>
+    <th scope="col">Imagen</th>
+    <th scope="col">Código</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Descripción</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Stock</th>
+    <th scope="col">Estado</th>
+    <th scope="col">Editar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let productInfo of page?.content">
+    <th class="align-middle" scope="row">
+      <img height="100px" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+    </th>
+    <td class="align-middle">{{productInfo.productId}}</td>
+    <td class="align-middle">{{productInfo.productName}}</td>
+    <td class="align-middle">{{CategoryType[productInfo.categoryType]}}</td>
+    <td class="align-middle">{{productInfo.productDescription}}</td>
+    <td class="align-middle">{{productInfo.productPrice | currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+    <td class="align-middle">{{productInfo.productStock}}</td>
+    <td class="align-middle">{{ProductStatus[productInfo.productStatus]}}</td>
+    <td class="align-middle">
+      <a class="btn btn-outline-success" [routerLink]="['/admin/producto',productInfo.productId,'edit']">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+          <path fill-rule="evenodd"
+                d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+        </svg>
+      </a>
+    </td>
+  </tbody>
+</table>
+<app-pagination [currentPage]="page"></app-pagination>

@@ -1,0 +1,70 @@
+<br>
+<h1 class="text-center display-4 mb-5">Regístrate</h1>
+<div style="width:40%; margin: 25px auto">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label><b>Correo Electrónico</b></label>
+      <input [(ngModel)]="user.email" type="email" class="form-control" id="email" name="email"
+             placeholder="Ingrese correo electrónico" email required autofocus #email="ngModel">
+      <div *ngIf="email.invalid && (email.dirty ||email.touched)">
+        <div *ngIf="email.errors.required">
+          Campo requerido
+        </div>
+        <div *ngIf="email.errors.email">
+          Correo inválido
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Nombre</b></label>
+      <input [(ngModel)]="user.name" type="text" class="form-control" id="name" name="name" placeholder="Ingrese nombre"
+             required #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty ||name.touched)">
+        <div *ngIf="name.errors.required">
+          Campo requerido
+        </div>
+        <div *ngIf="name.errors.minlength">
+          El campo debe tener al menos 3 caracteres de longitud
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Contraseña</b></label>
+      <input [(ngModel)]="user.password" type="password" class="form-control" id="password"
+             name="password" placeholder="Ingrese contraseña" minlength="3" required #password="ngModel">
+      <div *ngIf="password.invalid && (password.dirty ||password.touched)">
+        <div *ngIf="password.errors.required">
+          Campo requerido
+        </div>
+        <div *ngIf="password.errors.minlength">
+          El campo debe tener al menos 3 caracteres de longitud
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Número de contacto</b></label>
+      <input [(ngModel)]="user.phone" type="text" class="form-control" id="phone" name="phone"
+             placeholder="Ingrese número de contacto" required #phone="ngModel">
+      <div *ngIf="phone.invalid && (phone.dirty ||phone.touched)">
+        <div *ngIf="phone.errors.required">
+          Campo requerido
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label><b>Dirección</b></label>
+      <input [(ngModel)]="user.address" type="text" class="form-control" id="address" name="address"
+             placeholder="Ingrese dirección" required #address="ngModel">
+      <div *ngIf="address.invalid && (address.dirty ||address.touched)">
+        <div *ngIf="address.errors.required">
+          Campo requerido
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!form.form.valid">Registrarse</button>
+    </div>
+  </form>
+</div>
+

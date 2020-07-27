@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <a class="navbar-brand" [routerLink]="root">Inicio</a>
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item dropdown" *ngIf="!currentUser || currentUser.role == Role.Customer" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false"> Productos </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['categoria/0']" routerLinkActive="active"> Computadores </a>
+          <a class="dropdown-item" [routerLink]="['categoria/1']" routerLinkActive="active"> Mouse </a>
+          <a class="dropdown-item" [routerLink]="['categoria/2']" routerLinkActive="active"> Teclados </a>
+          <a class="dropdown-item" [routerLink]="['categoria/3']" routerLinkActive="active"> Otros </a>
+        </div>
+      </li>
+
+      <ng-container *ngIf="currentUser;">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['pedidos']">
+            Pedidos
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+            </svg>
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="currentUser;">
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['admin/pedidos']">
+            Estadísticas de pedidos
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-graph-up" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h1v16H0V0zm1 15h15v1H1v-1z"/>
+              <path fill-rule="evenodd"
+                    d="M14.39 4.312L10.041 9.75 7 6.707l-3.646 3.647-.708-.708L7 5.293 9.959 8.25l3.65-4.563.781.624z"/>
+              <path fill-rule="evenodd"
+                    d="M10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4h-3.5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </a>
+        </li>
+      </ng-container>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a *ngIf="!currentUser || currentUser.role == Role.Customer" class="nav-link " [routerLink]="['carrito']">
+          Mi carrito
+          <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor"
+               xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+          </svg>
+        </a>
+      </li>
+
+      <ng-container *ngIf="currentUser; else noUser">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false"> Opciones adicionales
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                    d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
+            </svg>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" [routerLink]="['perfil']"> Mi cuenta </a>
+            <a class="dropdown-item" (click)="logout()" [routerLink]="['login']" [queryParams]="{logout: true}"> Cerrar
+              Sesión </a>
+          </div>
+      </ng-container>
+
+      <ng-template #noUser>
+
+        <a class="nav-item nav-link " [routerLink]="['login']">
+          Iniciar Sesión
+        </a>
+
+        <a class="nav-item nav-link " [routerLink]="['registrar']">
+          Registrarse
+        </a>
+
+      </ng-template>
+
+    </ul>
+
+  </div>
+</nav>

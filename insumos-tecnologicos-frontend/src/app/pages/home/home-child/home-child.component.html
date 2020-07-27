@@ -1,0 +1,18 @@
+<div class="card">
+  <img height="50%" class="card-img-top" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+
+  <div class="card-body">
+
+    <h5 class="card-title ">{{productInfo.productName}}</h5>
+    <p class="card-text"><strong>Precio: </strong>{{productInfo.productPrice | currency : 'USD' : 'symbol' : '1.0-0'}}</p>
+
+    <br>
+
+    <a [routerLink]="['/producto',productInfo.productId]" *ngIf="productInfo.productStatus == 0; else offBlock"
+       class="btn btn-primary btn-block"> Comprar producto </a>
+
+    <ng-template #offBlock><a class="btn btn-secondary btn-block disabled"> Sin existencias en Stock </a></ng-template>
+
+  </div>
+
+</div>

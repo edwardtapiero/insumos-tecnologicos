@@ -1,0 +1,28 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+    url: jdbc:h2:file:~/insumos-tecnologicos-db;DB_CLOSE_ON_EXIT=FALSE;FILE_LOCK=SOCKET;AUTO_SERVER=TRUE;
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  queries:
+    users-query: SELECT EMAIL, CONTRASEÑA, ACTIVE FROM USUARIOS WHERE EMAIL=?
+    roles-query: SELECT EMAIL, ROL FROM USUARIOS WHERE EMAIL=?
+server:
+  servlet:
+    contextPath: /api
+  port: 8095
+jwtSecret: com-insumostecnologicos
+jwtExpiration: 86400
